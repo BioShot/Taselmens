@@ -19,3 +19,31 @@ $(document).ready(function () {
         audioElement.autoplay = true;
     }
 })
+
+
+document.deepSheep = {}
+var darksheep = document.darksheep
+darksheep.loginPrompt = function (callback){
+    Swal.fire({
+        icon: "question",
+        title: 'Discount Login',
+        html: `<input type="text" id="login" class="swal2-input" placeholder="Username">
+        <input type="password" id="password" class="swal2-input" placeholder="Password">`,
+        confirmButtonText: 'Sign in',
+        focusConfirm: false,
+        preConfirm: () => {
+          const login = Swal.getPopup().querySelector('#login').value
+          const password = Swal.getPopup().querySelector('#password').value
+          if (!login || !password) {
+            Swal.showValidationMessage(`Please enter Discount  Name and password(Ps: Check the back of your card!)`)
+          }
+          return { login: login, password: password }
+        }
+      }).then((result) => {
+        Swal.fire({
+            icon: "success"
+        })
+      })
+        
+      
+}
